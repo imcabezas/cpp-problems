@@ -2,12 +2,18 @@
 # The 'REQUIRED' keyword will cause an error if it's not found.
 find_package(GTest REQUIRED)
 
-# Create an executable for our tests from the test_main.cpp file.
-add_executable(run_tests test_main.cpp)
+# Create test executable
+add_executable(run_tests     
+    test_fizzbuzz.cpp
+)
 
-# Link our test executable against the Google Test libraries.
-# This is what gives us access to the TEST() macro and test runner.
-target_link_libraries(run_tests PRIVATE GTest::GTest GTest::Main)
+# Link against both Google Test AND our business logic library
+target_link_libraries(run_tests 
+    PRIVATE 
+    GTest::GTest 
+    GTest::Main
+    fizzbuzz_lib  # This is the key addition!
+)
 
 # Include the GoogleTest module to add support for CTest.
 include(GoogleTest)
