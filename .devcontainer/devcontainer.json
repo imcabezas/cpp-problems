@@ -1,0 +1,25 @@
+{
+  "name": "C++ Development (GCC & Clang)",
+
+  // This is the new, important part.
+  // It tells VS Code to look for a Dockerfile in the same directory
+  // and use it to build the environment.
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // NOTE: The "image" and "features" keys have been completely REMOVED.
+
+  // The rest of the file remains the same.
+  "postCreateCommand": "cmake -S . -B build",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "cheshirekow.cmake-format"
+      ]
+    }
+  }
+}
